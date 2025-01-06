@@ -10,6 +10,10 @@ module Scheduleapp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+   #config.before_configuration do
+      #database_yml = File.join(Rails.root, 'config', 'database.yml')
+      #YAML.load_file(database_yml, aliases: true) if File.exist?(database_yml)
+    #end
 
     # Configuration for the application, engines, and railties goes here.
     #
