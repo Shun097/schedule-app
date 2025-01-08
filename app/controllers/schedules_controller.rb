@@ -37,6 +37,9 @@ class SchedulesController < ApplicationController
 
 
   def destroy
+    @schedule = Schedule.find(params[:id])
+    @schedule.destroy
+    redirect_to schedules_path, notice: "スケジュールが削除されました。"
   end
 
   def schedule_params
