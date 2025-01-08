@@ -10,7 +10,13 @@ class SchedulesController < ApplicationController
   end
 
   def create
-  end
+    @schedule = Schedule.new(schedule_params)
+    if @schedule.save
+       redirect_to schedules_path, notice: "スケジュールが追加されました。"
+    else
+      render :new
+    end
+   end
 
   def show
   end
@@ -22,5 +28,9 @@ class SchedulesController < ApplicationController
   end
 
   def destroy
+  end
+
+  def schedule_params
+    params.require(:schedule).permit(:title, :start_date, :end_date, :all_day, :memo)
   end
 end
