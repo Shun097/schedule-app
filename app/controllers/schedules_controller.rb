@@ -22,11 +22,19 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.find(params[:id])
   end
 
-  def update
+  def edit
+    @schedule = Schedule.find(params[:id])
   end
 
-  def edit
+  def update
+    @schedule = Schedule.find(params[:id])
+    if @schedule.update(schedule_params)
+      redirect_to schedules_path, notice: "スケジュールが更新されました。"
+    else
+      render :edit
+    end
   end
+
 
   def destroy
   end
