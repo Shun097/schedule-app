@@ -1,5 +1,8 @@
 class SchedulesController < ApplicationController
   def index
+    @schedules = Schedule.all 
+    @total_schedules = @schedules.count         
+    @current_date = Date.today.strftime("%Y/%m/%d")
   end
 
   def new

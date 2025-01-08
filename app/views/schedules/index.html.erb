@@ -1,2 +1,34 @@
-<h1>Schedules#index</h1>
-<p>Find me in app/views/schedules/index.html.erb</p>
+<div class="container">
+<h1>スケジュール一覧</h1>
+
+<p>
+  本日の日付: <%= @current_date %> |
+  予定合計: <%= @total_schedules %> 件
+</p>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>タイトル</th>
+      <th>開始日</th>
+      <th>終了日</th>
+      <th>終日</th>
+      <th>更新日</th>
+      <th> </th> 
+    </tr>
+  </thead>
+  <tbody>
+    <% @schedules.each do |schedule| %>
+      <tr>
+        <td><%= schedule.id %></td>
+        <td><%= schedule.title %></td>
+        <td><%= schedule.start_date.present? ? schedule.start_date.strftime("%Y/%m/%d") : "未設定" %></td>
+        <td><%= schedule.end_date.present? ? schedule.end_date.strftime("%Y/%m/%d") : "未設定" %></td>
+        <td><%= schedule.all_day ? '◯' : ' ' %></td>
+        <td><%= schedule.updated_at.strftime("%Y/%m/%d %H:%M") %></td>
+　</tr>
+    <% end %>
+  </tbody>
+</table>
